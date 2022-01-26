@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CameraApp</string>
+    <string name="loading">Loading . . .</string>
+    <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
+
+
+</resources>

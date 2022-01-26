@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.myinnos:ImageSaveandShare:1.0.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f233ad29e35fb053d0a547d142398e45/jetified-ImageSaveandShare-1.0.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f233ad29e35fb053d0a547d142398e45/jetified-ImageSaveandShare-1.0.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f233ad29e35fb053d0a547d142398e45/jetified-ImageSaveandShare-1.0.3/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/81f4aacbea47f1c2468be494200d01f4/jetified-ImageSaveandShare-1.0.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/81f4aacbea47f1c2468be494200d01f4/jetified-ImageSaveandShare-1.0.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/81f4aacbea47f1c2468be494200d01f4/jetified-ImageSaveandShare-1.0.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.myinnos/ImageSaveandShare/1.0.3/6a2ea8cbfa28116cabfe3546afb0dda48f7c1ff1/ImageSaveandShare-1.0.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.myinnos/ImageSaveandShare/1.0.3/efb780afd3369cfa0d3717585c918b981151d931/ImageSaveandShare-1.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

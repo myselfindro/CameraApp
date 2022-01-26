@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.zomato:androidphotofilters:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f04d1d96ed3a5a9e78816a50608ae256/jetified-androidphotofilters-1.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f04d1d96ed3a5a9e78816a50608ae256/jetified-androidphotofilters-1.0.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f04d1d96ed3a5a9e78816a50608ae256/jetified-androidphotofilters-1.0.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d30be7d5c8579120133eb515fd687374/jetified-androidphotofilters-1.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d30be7d5c8579120133eb515fd687374/jetified-androidphotofilters-1.0.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d30be7d5c8579120133eb515fd687374/jetified-androidphotofilters-1.0.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.zomato/androidphotofilters/1.0.2/5dafc6b4ec486a97c50cbd8eeec8566e7c5c1b6b/androidphotofilters-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

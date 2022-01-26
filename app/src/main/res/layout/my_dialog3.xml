@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Photo Tips"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:text="1.    The settings shown here are the settings that are recommended for an approximate proper exposure based on the MyStudio® equipment you selected. Make sure your camera is set to MANUAL Mode and set each of the 3 settings on your camera to match the Recommended Settings.\n2.    Use the sliders to see how the other settings change when you adjust one of them to keep the same exposure. For example, for shallower depth of field, try decreasing the Aperture (F-Stop) to a lower number.\n3.    Turn off other lights in the room that may interfere with the light in your MyStudio® and use a tripod to keep your camera as steady as possible. It is also recommended to use the 2-second timer on your camera to avoid any potential camera movement when the shutter is depressed, especially at slower shutter speeds.\n4.    Once you have taken a photo with the recommended settings, check the image on your camera. If it is too dark, lower the shutter speed on your camera by one or two increments and try again. If it is too bright, increase the shutter speed incrementally until you are satisfied with the exposure."
+        android:textSize="@dimen/_12sdp"/>
+
+    <LinearLayout
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:background="@drawable/bg1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_horizontal"
+            android:text="OK"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12sdp" />
+
+
+    </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

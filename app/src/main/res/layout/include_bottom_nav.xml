@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_75sdp"
+        android:layout_marginBottom="1dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:weightSum="5">zz
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btnInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnIconCam"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_information"
+                android:backgroundTint="@android:color/black" />
+
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                android:fontFamily="@font/lora_regular"-->
+            <!--                android:text="Home"-->
+            <!--                android:gravity="center_horizontal" />-->
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btnswitchCamera"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_selfie"
+                android:backgroundTint="@android:color/black" />
+
+            <!--            <androidx.appcompat.widget.AppCompatTextView-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/_5sdp"-->
+            <!--                android:fontFamily="@font/lora_regular"-->
+            <!--                android:text="Profile"-->
+            <!--                android:gravity="center_horizontal" />-->
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnClick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_click" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btnSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconSetting"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_settings"
+                android:backgroundTint="@android:color/black" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconSetting2"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:visibility="gone"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_settings"
+                android:backgroundTint="@color/colorAccent" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:background="@drawable/ic_filter"
+                android:backgroundTint="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/btnRestore"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:background="@drawable/ic_more"
+                android:backgroundTint="@android:color/black"
+                android:textAllCaps="false" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>
