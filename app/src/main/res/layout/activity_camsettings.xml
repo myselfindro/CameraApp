@@ -7,7 +7,7 @@
     tools:context=".Camsettings">
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/_75sdp"
@@ -20,20 +20,26 @@
             android:layout_height="match_parent"
             android:orientation="horizontal" />
 
-        <TextView
+        <SurfaceView
+            android:id="@+id/TransparentView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:fontFamily="@font/poppins_medium"
-            android:text="AE/AF Lock"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/_10sdp"
-            android:gravity="center_horizontal" />
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true" />
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="@dimen/_20sdp"-->
+<!--            android:layout_marginTop="@dimen/_5sdp"-->
+<!--            android:layout_marginRight="@dimen/_20sdp"-->
+<!--            android:fontFamily="@font/poppins_medium"-->
+<!--            android:text="AE/AF Lock"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="@dimen/_10sdp"-->
+<!--            android:gravity="center_horizontal" />-->
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
@@ -54,10 +60,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_below="@+id/btnAElock"
-            android:textColor="@color/colorAccent"
-            android:text="AE/AF LOCK"/>
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:text="AE/AF LOCK"
+            android:textColor="@color/colorAccent" />
 
 
 
@@ -128,6 +135,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
-
+    <com.example.cameraapp.utils.DrawingView
+        android:id="@+id/drawing_surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.example.cameraapp.utils.DrawingView>
 
 </RelativeLayout>

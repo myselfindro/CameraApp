@@ -211,6 +211,7 @@
                 android:layout_width="match_parent"
                 android:scrollbarThumbVertical="@android:color/white"
                 android:scrollbars="vertical"
+                android:fadeScrollbars="false"
                 android:layout_height="@dimen/_250sdp"
                 android:layout_margin="@dimen/_10sdp"/>
 

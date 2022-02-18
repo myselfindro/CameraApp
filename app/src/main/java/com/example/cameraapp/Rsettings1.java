@@ -603,6 +603,8 @@ public class Rsettings1 extends AppCompatActivity {
             }
         });
 
+        rv_aperture.scrollToPosition(18);
+
 
     }
 
@@ -987,756 +989,756 @@ public class Rsettings1 extends AppCompatActivity {
     }
 
 
-    public List<String> getshutterspeedData2(int count) {
-        List<String> data1 = new ArrayList<>();
-        switch (count) {
-            case 0:
-
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                data1.add("0.3");
-                data1.add("0.4");
-                data1.add("1/2");
-                data1.add("0.6");
-                data1.add("0.8");
-                data1.add("1 sec");
-                break;
-
-            case 1:
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                data1.add("0.3");
-                data1.add("0.4");
-                data1.add("1/2");
-                break;
-            case 2:
-
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                break;
-            case 3:
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                break;
-            case 4:
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                break;
-        }
-
-        return data1;
-    }
-
-    public List<String> getshutterspeedData3(int count) {
-        List<String> data1 = new ArrayList<>();
-        switch (count) {
-            case 0:
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                data1.add("1/3");
-                data1.add("0.4");
-                data1.add("1/2");
-                data1.add("0.6");
-                break;
-
-            case 1:
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                data1.add("1/3");
-                data1.add("1/2");
-                break;
-            case 2:
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-
-                break;
-            case 3:
-
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                break;
-            case 4:
-
-                data1.add("1/6400");
-                data1.add("1/5000");
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                break;
-        }
-
-        return data1;
-    }
-
-    public List<String> getshutterspeedData8(int count) {
-        List<String> data1 = new ArrayList<>();
-        switch (count) {
-            case 0:
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                break;
-
-            case 1:
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                break;
-            case 2:
-
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-
-                break;
-            case 3:
-
-                data1.add("1/8000");
-                data1.add("1/6400");
-                data1.add("1/5000");
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-
-                break;
-            case 4:
-                data1.add("");
-                data1.add("");
-                data1.add("");
-                data1.add("1/8000");
-                data1.add("1/6400");
-                data1.add("1/5000");
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-
-                break;
-        }
-
-        return data1;
-    }
-
-
-    public List<String> getshutterspeedData4and5(int count) {
-        List<String> data1 = new ArrayList<>();
-        switch (count) {
-            case 0:
-
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                data1.add("0.3");
-                data1.add("0.4");
-                data1.add("1/2");
-                break;
-
-            case 1:
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                break;
-            case 2:
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                break;
-            case 3:
-
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-
-                break;
-            case 4:
-
-                data1.add("1/8000");
-                data1.add("1/6400");
-                data1.add("1/5000");
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-
-                break;
-        }
-
-        return data1;
-    }
-
-
-    public List<String> getshutterspeedData6and7(int count) {
-        List<String> data1 = new ArrayList<>();
-        switch (count) {
-            case 0:
-
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-                data1.add("1/5");
-                data1.add("1/4");
-                data1.add("1/3");
-
-                break;
-
-            case 1:
-
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-                data1.add("1/10");
-                data1.add("1/8");
-                data1.add("1/6");
-
-                break;
-            case 2:
-
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-                data1.add("1/20");
-                data1.add("1/15");
-                data1.add("1/13");
-
-
-                break;
-            case 3:
-
-
-                data1.add("1/6400");
-                data1.add("1/5000");
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-                data1.add("1/40");
-                data1.add("1/30");
-                data1.add("1/25");
-
-
-                break;
-            case 4:
-
-
-                data1.add("1/8000");
-                data1.add("1/6400");
-                data1.add("1/5000");
-                data1.add("1/4000");
-                data1.add("1/3200");
-                data1.add("1/2500");
-                data1.add("1/2000");
-                data1.add("1/1600");
-                data1.add("1/1250");
-                data1.add("1/1000");
-                data1.add("1/800");
-                data1.add("1/640");
-                data1.add("1/500");
-                data1.add("1/400");
-                data1.add("1/320");
-                data1.add("1/250");
-                data1.add("1/200");
-                data1.add("1/160");
-                data1.add("1/125");
-                data1.add("1/100");
-                data1.add("1/80");
-                data1.add("1/60");
-                data1.add("1/50");
-
-
-                break;
-        }
-
-        return data1;
-    }
+//    public List<String> getshutterspeedData2(int count) {
+//        List<String> data1 = new ArrayList<>();
+//        switch (count) {
+//            case 0:
+//
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                data1.add("0.3");
+//                data1.add("0.4");
+//                data1.add("1/2");
+//                data1.add("0.6");
+//                data1.add("0.8");
+//                data1.add("1 sec");
+//                break;
+//
+//            case 1:
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                data1.add("0.3");
+//                data1.add("0.4");
+//                data1.add("1/2");
+//                break;
+//            case 2:
+//
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                break;
+//            case 3:
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                break;
+//            case 4:
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                break;
+//        }
+//
+//        return data1;
+//    }
+//
+//    public List<String> getshutterspeedData3(int count) {
+//        List<String> data1 = new ArrayList<>();
+//        switch (count) {
+//            case 0:
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                data1.add("1/3");
+//                data1.add("0.4");
+//                data1.add("1/2");
+//                data1.add("0.6");
+//                break;
+//
+//            case 1:
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                data1.add("1/3");
+//                data1.add("1/2");
+//                break;
+//            case 2:
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//
+//                break;
+//            case 3:
+//
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                break;
+//            case 4:
+//
+//                data1.add("1/6400");
+//                data1.add("1/5000");
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                break;
+//        }
+//
+//        return data1;
+//    }
+//
+//    public List<String> getshutterspeedData8(int count) {
+//        List<String> data1 = new ArrayList<>();
+//        switch (count) {
+//            case 0:
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                break;
+//
+//            case 1:
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                break;
+//            case 2:
+//
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//
+//                break;
+//            case 3:
+//
+//                data1.add("1/8000");
+//                data1.add("1/6400");
+//                data1.add("1/5000");
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//
+//                break;
+//            case 4:
+//                data1.add("");
+//                data1.add("");
+//                data1.add("");
+//                data1.add("1/8000");
+//                data1.add("1/6400");
+//                data1.add("1/5000");
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//
+//                break;
+//        }
+//
+//        return data1;
+//    }
+//
+//
+//    public List<String> getshutterspeedData4and5(int count) {
+//        List<String> data1 = new ArrayList<>();
+//        switch (count) {
+//            case 0:
+//
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                data1.add("0.3");
+//                data1.add("0.4");
+//                data1.add("1/2");
+//                break;
+//
+//            case 1:
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                break;
+//            case 2:
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                break;
+//            case 3:
+//
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//
+//                break;
+//            case 4:
+//
+//                data1.add("1/8000");
+//                data1.add("1/6400");
+//                data1.add("1/5000");
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//
+//                break;
+//        }
+//
+//        return data1;
+//    }
+//
+//
+//    public List<String> getshutterspeedData6and7(int count) {
+//        List<String> data1 = new ArrayList<>();
+//        switch (count) {
+//            case 0:
+//
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//                data1.add("1/5");
+//                data1.add("1/4");
+//                data1.add("1/3");
+//
+//                break;
+//
+//            case 1:
+//
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//                data1.add("1/10");
+//                data1.add("1/8");
+//                data1.add("1/6");
+//
+//                break;
+//            case 2:
+//
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//                data1.add("1/20");
+//                data1.add("1/15");
+//                data1.add("1/13");
+//
+//
+//                break;
+//            case 3:
+//
+//
+//                data1.add("1/6400");
+//                data1.add("1/5000");
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//                data1.add("1/40");
+//                data1.add("1/30");
+//                data1.add("1/25");
+//
+//
+//                break;
+//            case 4:
+//
+//
+//                data1.add("1/8000");
+//                data1.add("1/6400");
+//                data1.add("1/5000");
+//                data1.add("1/4000");
+//                data1.add("1/3200");
+//                data1.add("1/2500");
+//                data1.add("1/2000");
+//                data1.add("1/1600");
+//                data1.add("1/1250");
+//                data1.add("1/1000");
+//                data1.add("1/800");
+//                data1.add("1/640");
+//                data1.add("1/500");
+//                data1.add("1/400");
+//                data1.add("1/320");
+//                data1.add("1/250");
+//                data1.add("1/200");
+//                data1.add("1/160");
+//                data1.add("1/125");
+//                data1.add("1/100");
+//                data1.add("1/80");
+//                data1.add("1/60");
+//                data1.add("1/50");
+//
+//
+//                break;
+//        }
+//
+//        return data1;
+//    }
 
 
     @Override

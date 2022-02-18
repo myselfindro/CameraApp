@@ -4,18 +4,23 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Shader;
 import android.hardware.Camera;
 import android.hardware.camera2.params.RggbChannelVector;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -39,9 +44,14 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.example.cameraapp.adapter.PickerAdapter2;
 import com.example.cameraapp.adapter.PickerAdapter3;
 import com.example.cameraapp.utils.CameraPreview;
+import com.example.cameraapp.utils.DrawingView;
 import com.yarolegovich.discretescrollview.DSVOrientation;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +62,7 @@ import travel.ithaka.android.horizontalpickerlib.PickerLayoutManager3;
 public class Camsettings extends AppCompatActivity {
 
     private static final String TAG = "mytag";
+    private static final int FOCUS_AREA_SIZE = 300;
     ImageView btn_back, iconSetting, iconFilter, btnClick, btnRestore, btnClose, iconSetting2, btnIconCam;
     TextView btnWhite, btnExpose, btnZoom, tvTemp, tvISO, btnTint, tvCool, tvWarm, btnShutter, tvlowISO, tvmaxISO;
     View Ulwhite, Ulexposure, Ulzoom;
@@ -75,12 +86,22 @@ public class Camsettings extends AppCompatActivity {
     LinearLayout ll_bottom_view;
     Switch btnAutowbswitch;
     String Lightnumber;
-    String AdditionalLightNumber;
+    String AdditionalLightNumber, CameraExposureSettingsIncrementalValuesresponse;
     String light;
     int totallights;
     String phordslr = "";
     SeekBar seekBarZoom, seekBarTemp;
     Canvas canvas;
+    Switch btnAElock;
+    String aelock = "1";
+    SharedPreferences sharedPreferences;
+    private List<String> data;
+    JSONArray Isoarry;
+    SurfaceView transparentView;
+    SurfaceHolder holder;
+    private List<String> shutterdata;
+    private DrawingView drawingView;
+
 
     static {
         System.loadLibrary("NativeImageProcessor");
@@ -88,7 +109,7 @@ public class Camsettings extends AppCompatActivity {
 
     private String filtercolor = "";
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +124,10 @@ public class Camsettings extends AppCompatActivity {
         } else {
             totallights = Integer.parseInt(Lightnumber) + Integer.parseInt(AdditionalLightNumber);
         }
+        sharedPreferences = getApplicationContext().getSharedPreferences("allresponse", MODE_PRIVATE);
+        CameraExposureSettingsIncrementalValuesresponse = sharedPreferences.getString("CameraExposureSettingsIncrementalValuesresponse", "");
+        Log.d(TAG, "Responsedata-->"+CameraExposureSettingsIncrementalValuesresponse);
+        drawingView = (DrawingView) findViewById(R.id.drawing_surface);
         btn_back = findViewById(R.id.btn_back);
         iconSetting = findViewById(R.id.iconSetting);
         btnWhite = findViewById(R.id.btnWhite);
@@ -138,6 +163,8 @@ public class Camsettings extends AppCompatActivity {
         seekBarZoom.setMax(10);
         btnClick = findViewById(R.id.btnClick);
         btnswitchCamera = findViewById(R.id.btnswitchCamera);
+        btnAElock = findViewById(R.id.btnAElock);
+        transparentView = findViewById(R.id.TransparentView);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         myContext = this;
 
@@ -150,8 +177,9 @@ public class Camsettings extends AppCompatActivity {
         mPreview = new CameraPreview(myContext, mCamera);
         cameraPreview.addView(mPreview, 0);
         mCamera.startPreview();
+        mPreview.setDrawingView(drawingView);
         safeToTakePicture = true;
-        btnAutowbswitch.setChecked(true);
+        btnAutowbswitch.setChecked(false);
 
 
         PickerLayoutManager3 pickerLayoutManager3 = new PickerLayoutManager3(this, PickerLayoutManager3.HORIZONTAL, false);
@@ -182,17 +210,58 @@ public class Camsettings extends AppCompatActivity {
 
 
         rv_Shutter.setOrientation(DSVOrientation.HORIZONTAL);
-        adapter4 = new PickerAdapter3(this, getShutterspeed(0), rv_Shutter);
+        adapter4 = new PickerAdapter3(this, getShutterspeed(""), rv_Shutter);
         rv_Shutter.setAdapter(adapter4);
         rv_Shutter.setItemTransformer(new ScaleTransformer.Builder()
                 .setMinScale(0.8f)
                 .setMaxScale(1.1f)
                 .build());
 
+
+
         rv_temp.scrollToPosition(40);
         rv_tint.scrollToPosition(14);
         btnTint.setText("Tint: 0");
         tvTemp.setText("Temperature: " + "5000" + "K");
+
+        btnAElock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+
+                    aelock = "";
+                    ll_bottom_view.setVisibility(View.GONE);
+                    iconSetting2.setVisibility(View.VISIBLE);
+                    iconSetting.setVisibility(View.GONE);
+
+                } else {
+                    aelock = "1";
+                    ll_bottom_view.setVisibility(View.VISIBLE);
+                    iconSetting.setVisibility(View.VISIBLE);
+                    iconSetting2.setVisibility(View.GONE);
+
+                }
+
+            }
+        });
+
+
+       /* mPreview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (aelock.equals("1")) {
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        focusOnTouch(event);
+                    }
+                } else {
+
+                }
+
+                return true;
+            }
+        });*/
+
 
         seekBarZoom.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -504,9 +573,14 @@ public class Camsettings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ll_bottom_view.setVisibility(View.VISIBLE);
-                iconSetting.setVisibility(View.VISIBLE);
-                iconSetting2.setVisibility(View.GONE);
+                if (aelock.equals("")){
+                    Toast.makeText(getApplicationContext(),"AE/AF Lock is ON! Please trun off to edit settings",Toast.LENGTH_SHORT).show();
+                }else{
+                    ll_bottom_view.setVisibility(View.VISIBLE);
+                    iconSetting.setVisibility(View.VISIBLE);
+                    iconSetting2.setVisibility(View.GONE);
+                }
+
             }
         });
 
@@ -547,44 +621,113 @@ public class Camsettings extends AppCompatActivity {
         switch (totallights) {
             case 1:
                 btnShutter.setText("Shutter Speed: 1/13");
-                rv_Shutter.scrollToPosition(5);
+//                rv_Shutter.scrollToPosition(5);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/13"));
                 break;
             case 2:
                 btnShutter.setText("Shutter Speed: 1/25");
-                rv_Shutter.scrollToPosition(8);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
+//                rv_Shutter.scrollToPosition(8);
                 break;
             case 3:
                 btnShutter.setText("Shutter Speed: 1/40");
-                rv_Shutter.scrollToPosition(10);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/40"));
+//                rv_Shutter.scrollToPosition(10);
                 break;
             case 4:
                 btnShutter.setText("Shutter Speed: 1/50");
-                rv_Shutter.scrollToPosition(11);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
+//                rv_Shutter.scrollToPosition(11);
                 break;
             case 5:
                 btnShutter.setText("Shutter Speed: 1/50");
-                rv_Shutter.scrollToPosition(11);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
+//                rv_Shutter.scrollToPosition(11);
                 break;
             case 6:
                 btnShutter.setText("Shutter Speed: 1/80");
-                rv_Shutter.scrollToPosition(13);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
+//                rv_Shutter.scrollToPosition(13);
                 break;
             case 7:
                 btnShutter.setText("Shutter Speed: 1/80");
-                rv_Shutter.scrollToPosition(13);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
+//                rv_Shutter.scrollToPosition(13);
                 break;
             case 8:
                 btnShutter.setText("Shutter Speed: 1/100");
-                rv_Shutter.scrollToPosition(14);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/100"));
+//                rv_Shutter.scrollToPosition(14);
                 break;
             default:
                 btnShutter.setText("Shutter Speed: 1/25");
-                rv_Shutter.scrollToPosition(8);
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
+//                rv_Shutter.scrollToPosition(8);
                 break;
         }
 
 
     }
+
+
+    private void focusOnTouch(MotionEvent event) {
+        try{
+            if (mCamera != null) {
+
+                Camera.Parameters parameters = mCamera.getParameters();
+                if (parameters.getMaxNumMeteringAreas() > 0) {
+                    Log.i(TAG, "fancy !");
+                    Rect rect = calculateFocusArea(event.getX(), event.getY());
+
+                    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
+                    List<Camera.Area> meteringAreas = new ArrayList<Camera.Area>();
+                    meteringAreas.add(new Camera.Area(rect, 1000));
+                    parameters.setFocusAreas(meteringAreas);
+
+                    mCamera.setParameters(parameters);
+                    mCamera.autoFocus(mAutoFocusTakePictureCallback);
+                } else {
+                    mCamera.autoFocus(mAutoFocusTakePictureCallback);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private Rect calculateFocusArea(float x, float y) {
+        int left = clamp(Float.valueOf((x / mPreview.getWidth()) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+        int top = clamp(Float.valueOf((y / mPreview.getHeight()) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
+
+        return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
+    }
+
+    private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
+        int result;
+        if (Math.abs(touchCoordinateInCameraReper) + focusAreaSize / 2 > 1000) {
+            if (touchCoordinateInCameraReper > 0) {
+                result = 1000 - focusAreaSize / 2;
+            } else {
+                result = -1000 + focusAreaSize / 2;
+            }
+        } else {
+            result = touchCoordinateInCameraReper - focusAreaSize / 2;
+        }
+        return result;
+    }
+
+    private Camera.AutoFocusCallback mAutoFocusTakePictureCallback = new Camera.AutoFocusCallback() {
+        @Override
+        public void onAutoFocus(boolean success, Camera camera) {
+            if (success) {
+                // do something...
+                Log.i("tap_to_focus", "success!");
+            } else {
+                // do something...
+                Log.i("tap_to_focus", "fail!");
+            }
+        }
+    };
 
 
     private void onItemChangedISO(String s) {
@@ -1124,6 +1267,9 @@ public class Camsettings extends AppCompatActivity {
                         break;
                 }
 
+                rv_temp.smoothScrollToPosition(44);
+                rv_tint.scrollToPosition(14);
+                btnTint.setText("Tint: 0");
                 dialog.dismiss();
             }
         });
@@ -1256,61 +1402,85 @@ public class Camsettings extends AppCompatActivity {
     }
 
     public List<String> getisoData(int count) {
-        List<String> data = new ArrayList<>();
+//        List<String> data = new ArrayList<>();
+//
+//        data.add("25");
+//        data.add("50");
+//        data.add("100");
+//        data.add("200");
+//        data.add("400");
+//        data.add("800");
+//        data.add("1600");
+//
+//
+//        return data;
 
-        data.add("25");
-        data.add("50");
-        data.add("100");
-        data.add("200");
-        data.add("400");
-        data.add("800");
-        data.add("1600");
-
+        data = new ArrayList<String>();
+        try {
+            JSONObject res = new JSONObject(CameraExposureSettingsIncrementalValuesresponse);
+            Isoarry = res.getJSONObject("data").getJSONArray("iso");
+            for (int i = 0; i < Isoarry.length(); i++) {
+                data.add(String.valueOf(Isoarry.get(i)));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return data;
 
     }
 
 
-    public List<String> getShutterspeed(int count) {
+    public List<String> getShutterspeed(String isoval) {
 
-        List<String> data = new ArrayList<>();
-        data.add("1/4");
-        data.add("1/5");
-        data.add("1/6");
-        data.add("1/8");
-        data.add("1/10");
-        data.add("1/13");
-        data.add("1/15");
-        data.add("1/20");
-        data.add("1/25");
-        data.add("1/30");
-        data.add("1/40");
-        data.add("1/50");
-        data.add("1/60");
-        data.add("1/80");
-        data.add("1/100");
-        data.add("1/125");
-        data.add("1/160");
-        data.add("1/200");
-        data.add("1/250");
-        data.add("1/320");
-        data.add("1/400");
-        data.add("1/500");
-        data.add("1/640");
-        data.add("1/800");
-        data.add("1/1000");
-        data.add("1/1250");
-        data.add("1/1600");
-        data.add("1/2000");
-        data.add("1/2500");
-        data.add("1/3200");
-        data.add("1/4000");
-        data.add("1/5000");
-        data.add("1/6400");
-        data.add("1/8000");
+        shutterdata = new ArrayList<>();
+        try {
+            JSONObject res = new JSONObject(CameraExposureSettingsIncrementalValuesresponse);
+            Isoarry = res.getJSONObject("data").getJSONArray("shutter");
+            for (int i = 0; i < Isoarry.length(); i++) {
+                shutterdata.add(String.valueOf(Isoarry.get(i)));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        return data;
+        return shutterdata;
+//        data.add("1/4");
+//        data.add("1/5");
+//        data.add("1/6");
+//        data.add("1/8");
+//        data.add("1/10");
+//        data.add("1/13");
+//        data.add("1/15");
+//        data.add("1/20");
+//        data.add("1/25");
+//        data.add("1/30");
+//        data.add("1/40");
+//        data.add("1/50");
+//        data.add("1/60");
+//        data.add("1/80");
+//        data.add("1/100");
+//        data.add("1/125");
+//        data.add("1/160");
+//        data.add("1/200");
+//        data.add("1/250");
+//        data.add("1/320");
+//        data.add("1/400");
+//        data.add("1/500");
+//        data.add("1/640");
+//        data.add("1/800");
+//        data.add("1/1000");
+//        data.add("1/1250");
+//        data.add("1/1600");
+//        data.add("1/2000");
+//        data.add("1/2500");
+//        data.add("1/3200");
+//        data.add("1/4000");
+//        data.add("1/5000");
+//        data.add("1/6400");
+//        data.add("1/8000");
+//
+//        return data;
 
     }
 

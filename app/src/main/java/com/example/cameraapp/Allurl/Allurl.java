@@ -20,10 +20,6 @@ public class Allurl {
 
 
 
-
-
-
-
     static {
 
         baseUrl = "http://dev1.ivantechnology.in/cameraapp/api/mystudiophotoasst/v1";
@@ -37,11 +33,6 @@ public class Allurl {
         backgroundimage = baseUrl+"/get-app-background-image";
         AppVersion = baseUrl+"/get-app-version";
         AppContent = baseUrl+"/get-app-content";
-
-
-
-
-
 
 
         USER_NAME = "user_name";

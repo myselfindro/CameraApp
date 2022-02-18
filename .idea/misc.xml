@@ -3,8 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_camsettings.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_additional_light.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_camerafilter.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_camsettings.xml" value="0.264" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_rsettings.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_rsettings1.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_selectstudio_light.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_selectstudio_light2.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/include_bottom_nav.xml" value="0.23802083333333332" />
         <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/include_bottom_setting.xml" value="0.4" />
       </map>
     </option>

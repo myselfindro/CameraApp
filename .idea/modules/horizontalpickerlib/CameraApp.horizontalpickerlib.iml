@@ -32,6 +32,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../horizontalpickerlib">
       <sourceFolder url="file://$MODULE_DIR$/../../../horizontalpickerlib/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../horizontalpickerlib/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../horizontalpickerlib/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../horizontalpickerlib/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../horizontalpickerlib/src/androidTest/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../../horizontalpickerlib/src/main/java" isTestSource="false" />
