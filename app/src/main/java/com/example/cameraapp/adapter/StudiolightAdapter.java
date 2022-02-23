@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,18 +23,20 @@ public class StudiolightAdapter extends RecyclerView.Adapter<StudiolightAdapter.
 
     private static final String TAG = "Myapp";
     private LayoutInflater inflater;
-    private ArrayList<StudiolightModel> studiolightModelArrayList;
+    public ArrayList<StudiolightModel> studiolightModelArrayList;
     ArrayList<StudiolightModel> lightnumberModelArrayList;
 
     Context ctx;
     int selectedPosition = -1;
+    String lightvalue;
 
 
-    public StudiolightAdapter(Context ctx, ArrayList<StudiolightModel> studiolightModelArrayList, ArrayList<StudiolightModel> lightnumberModelArrayList) {
+    public StudiolightAdapter(Context ctx, ArrayList<StudiolightModel> studiolightModelArrayList, ArrayList<StudiolightModel> lightnumberModelArrayList, String light) {
         inflater = LayoutInflater.from(ctx);
         this.studiolightModelArrayList = studiolightModelArrayList;
         this.lightnumberModelArrayList = lightnumberModelArrayList;
         this.ctx = ctx;
+        lightvalue = light;
 
     }
 
@@ -49,10 +52,49 @@ public class StudiolightAdapter extends RecyclerView.Adapter<StudiolightAdapter.
     public void onBindViewHolder(StudiolightAdapter.MyViewHolder holder, int position) {
 
         holder.tvLight.setText(studiolightModelArrayList.get(position).getLightboxname());
-        if (selectedPosition == position)
-            holder.btnLight.setBackgroundResource(R.drawable.bg1);
-        else
-            holder.btnLight.setBackgroundResource(R.drawable.border);
+        Log.d(TAG, "lightvalue: " + lightvalue);
+
+        if (selectedPosition == position) {
+
+            if (lightvalue.equals("fluorescnent")) {
+                switch (studiolightModelArrayList.get(position).getLightboxname()) {
+                    case "US31LED":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "VS36LED":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "VS53LED":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    default:
+                        holder.btnLight.setBackgroundResource(R.drawable.bg1);
+                        break;
+                }
+            } else {
+                holder.btnLight.setBackgroundResource(R.drawable.bg1);
+            }
+
+        } else {
+            if (lightvalue.equals("fluorescnent")) {
+                switch (studiolightModelArrayList.get(position).getLightboxname()) {
+                    case "US31LED":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "VS36LED":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "VS53LED":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    default:
+                        holder.btnLight.setBackgroundResource(R.drawable.border);
+                        break;
+                }
+            } else {
+                holder.btnLight.setBackgroundResource(R.drawable.border);
+            }
+        }
         holder.btnLight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +102,8 @@ public class StudiolightAdapter extends RecyclerView.Adapter<StudiolightAdapter.
                 notifyDataSetChanged();
 //                String number = lightnumberModelArrayList.get(position).getLedlightnumber();
 //                Log.d(TAG,"LEDnumber-->"+number);
-                ((SelectstudioLight)ctx).lightNumber(lightnumberModelArrayList.get(position));
+
+                ((SelectstudioLight) ctx).lightNumber(lightnumberModelArrayList.get(position), studiolightModelArrayList.get(position).getLightboxname());
 
 
             }

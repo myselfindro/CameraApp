@@ -1,22 +1,22 @@
 package com.example.cameraapp.utils;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.os.Handler;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+        import android.content.Context;
+        import android.graphics.Bitmap;
+        import android.graphics.Canvas;
+        import android.graphics.Color;
+        import android.graphics.Paint;
+        import android.graphics.Rect;
+        import android.hardware.Camera;
+        import android.os.Handler;
+        import android.util.DisplayMetrics;
+        import android.util.Log;
+        import android.view.MotionEvent;
+        import android.view.SurfaceHolder;
+        import android.view.SurfaceView;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+        import java.io.IOException;
+        import java.util.ArrayList;
+        import java.util.List;
 
 public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
     private static final String TAG = "mayapp";
@@ -25,6 +25,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     float mDist = 0;
     private DrawingView drawingView;
     private boolean drawingViewSet = false;
+    public boolean aflock = false;
 
     public CameraPreview(Context context, Camera camera) {
         super(context);
@@ -51,6 +52,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         }
     }
 
+
     public void refreshCamera(Camera camera) {
         if (mHolder.getSurface() == null) {
             // preview surface does not exist
@@ -73,6 +75,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             Log.d(VIEW_LOG_TAG, "Error starting camera preview: " + e.getMessage());
         }
     }
+
 
     public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
         // If your preview can change or rotate, take care of those events here.
@@ -123,6 +126,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         refreshCamera(mCamera);
     }
 
+
     public void setCamera(Camera camera) {
         //method to set a camera instance
         mCamera = camera;
@@ -170,44 +174,49 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
             }
         }
 
-        if(event.getAction() == MotionEvent.ACTION_DOWN){
-            float x = event.getX();
-            float y = event.getY();
+        if (aflock){
 
-            Rect touchRect = new Rect(
-                    (int)(x - 100),
-                    (int)(y - 100),
-                    (int)(x + 100),
-                    (int)(y + 100));
+            if(event.getAction() == MotionEvent.ACTION_DOWN){
+                float x = event.getX();
+                float y = event.getY();
+
+                Rect touchRect = new Rect(
+                        (int)(x - 100),
+                        (int)(y - 100),
+                        (int)(x + 100),
+                        (int)(y + 100));
 
 
-            final Rect targetFocusRect = new Rect(
-                    touchRect.left * 2000/this.getWidth() - 1000,
-                    touchRect.top * 2000/this.getHeight() - 1000,
-                    touchRect.right * 2000/this.getWidth() - 1000,
-                    touchRect.bottom * 2000/this.getHeight() - 1000);
+                final Rect targetFocusRect = new Rect(
+                        touchRect.left * 2000/this.getWidth() - 1000,
+                        touchRect.top * 2000/this.getHeight() - 1000,
+                        touchRect.right * 2000/this.getWidth() - 1000,
+                        touchRect.bottom * 2000/this.getHeight() - 1000);
 
-            doTouchFocus(targetFocusRect);
-            if (drawingViewSet) {
-                drawingView.setHaveTouch(true, touchRect);
-                drawingView.invalidate();
+                doTouchFocus(targetFocusRect);
+                if (drawingViewSet) {
+                    drawingView.setHaveTouch(true, touchRect);
+                    drawingView.invalidate();
 
-                // Remove the square indicator after 1000 msec
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
+                    // Remove the square indicator after 1000 msec
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        drawingView.setHaveTouch(false, new Rect(0,0,0,0));
-                        drawingView.invalidate();
-                    }
-                }, 1000);
+                        @Override
+                        public void run() {
+                            drawingView.setHaveTouch(false, new Rect(0,0,0,0));
+                            drawingView.invalidate();
+                        }
+                    }, 1000);
+                }
+
             }
 
         }
 
 
-        return true;
+
+        return false;
     }
 
     public void doTouchFocus(final Rect tfocusRect) {

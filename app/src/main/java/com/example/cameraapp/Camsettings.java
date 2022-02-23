@@ -97,7 +97,6 @@ public class Camsettings extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     private List<String> data;
     JSONArray Isoarry;
-    SurfaceView transparentView;
     SurfaceHolder holder;
     private List<String> shutterdata;
     private DrawingView drawingView;
@@ -164,7 +163,6 @@ public class Camsettings extends AppCompatActivity {
         btnClick = findViewById(R.id.btnClick);
         btnswitchCamera = findViewById(R.id.btnswitchCamera);
         btnAElock = findViewById(R.id.btnAElock);
-        transparentView = findViewById(R.id.TransparentView);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         myContext = this;
 
@@ -180,13 +178,14 @@ public class Camsettings extends AppCompatActivity {
         mPreview.setDrawingView(drawingView);
         safeToTakePicture = true;
         btnAutowbswitch.setChecked(false);
+        mPreview.aflock=true;
 
 
         PickerLayoutManager3 pickerLayoutManager3 = new PickerLayoutManager3(this, PickerLayoutManager3.HORIZONTAL, false);
         pickerLayoutManager3.setChangeAlpha(true);
         pickerLayoutManager3.setScaleDownBy(0.99f);
         pickerLayoutManager3.setScaleDownDistance(1.9f);
-        adapter = new PickerAdapter2(this, gettempData(80), rv_temp);
+        adapter = new PickerAdapter2(this, gettempData(0), rv_temp);
         SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(rv_temp);
         rv_temp.setLayoutManager(pickerLayoutManager3);
@@ -230,13 +229,13 @@ public class Camsettings extends AppCompatActivity {
 
                 if (isChecked) {
 
-                    aelock = "";
+                    mPreview.aflock=false;
                     ll_bottom_view.setVisibility(View.GONE);
                     iconSetting2.setVisibility(View.VISIBLE);
                     iconSetting.setVisibility(View.GONE);
 
                 } else {
-                    aelock = "1";
+                    mPreview.aflock=true;
                     ll_bottom_view.setVisibility(View.VISIBLE);
                     iconSetting.setVisibility(View.VISIBLE);
                     iconSetting2.setVisibility(View.GONE);
@@ -670,64 +669,6 @@ public class Camsettings extends AppCompatActivity {
     }
 
 
-    private void focusOnTouch(MotionEvent event) {
-        try{
-            if (mCamera != null) {
-
-                Camera.Parameters parameters = mCamera.getParameters();
-                if (parameters.getMaxNumMeteringAreas() > 0) {
-                    Log.i(TAG, "fancy !");
-                    Rect rect = calculateFocusArea(event.getX(), event.getY());
-
-                    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-                    List<Camera.Area> meteringAreas = new ArrayList<Camera.Area>();
-                    meteringAreas.add(new Camera.Area(rect, 1000));
-                    parameters.setFocusAreas(meteringAreas);
-
-                    mCamera.setParameters(parameters);
-                    mCamera.autoFocus(mAutoFocusTakePictureCallback);
-                } else {
-                    mCamera.autoFocus(mAutoFocusTakePictureCallback);
-                }
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    private Rect calculateFocusArea(float x, float y) {
-        int left = clamp(Float.valueOf((x / mPreview.getWidth()) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
-        int top = clamp(Float.valueOf((y / mPreview.getHeight()) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
-
-        return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
-    }
-
-    private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
-        int result;
-        if (Math.abs(touchCoordinateInCameraReper) + focusAreaSize / 2 > 1000) {
-            if (touchCoordinateInCameraReper > 0) {
-                result = 1000 - focusAreaSize / 2;
-            } else {
-                result = -1000 + focusAreaSize / 2;
-            }
-        } else {
-            result = touchCoordinateInCameraReper - focusAreaSize / 2;
-        }
-        return result;
-    }
-
-    private Camera.AutoFocusCallback mAutoFocusTakePictureCallback = new Camera.AutoFocusCallback() {
-        @Override
-        public void onAutoFocus(boolean success, Camera camera) {
-            if (success) {
-                // do something...
-                Log.i("tap_to_focus", "success!");
-            } else {
-                // do something...
-                Log.i("tap_to_focus", "fail!");
-            }
-        }
-    };
 
 
     private void onItemChangedISO(String s) {
@@ -839,46 +780,6 @@ public class Camsettings extends AppCompatActivity {
                 filtercolor = "#4DFF0000";
                 mPreview.setBackgroundColor(Color.parseColor("#34FF0000"));
             }
-
-//            if (val < -130) {
-//                filtercolor = "#664EBB19";
-//                mPreview.setBackgroundColor(Color.parseColor("#664EBB19"));
-//            }
-//            if (val >= -130 && val < -90) {
-//                filtercolor = "#6619BB3C";
-//                mPreview.setBackgroundColor(Color.parseColor("#6619BB3C"));
-//            }
-//            if (val >= -90 && val < -40) {
-//                filtercolor = "#4D9BFF00";
-//                mPreview.setBackgroundColor(Color.parseColor("#4D9BFF00"));
-//            }
-//
-//            if (val >= -40 && val < 0) {
-//                filtercolor = "#4DABFE2A";
-//                mPreview.setBackgroundColor(Color.parseColor("#4DABFE2A"));
-//            }
-//
-//            if (val >= 0 && val < 10) {
-//                filtercolor = "#0040BF45";
-//                mPreview.setBackgroundColor(Color.parseColor("#0040BF45"));
-//            }
-//            if (val >= 10 && val < 40) {
-//                filtercolor = "#4DF34EFF";
-//                mPreview.setBackgroundColor(Color.parseColor("#4DF34EFF"));
-//            }
-//            if (val >= 40 && val < 90) {
-//                filtercolor = "#4DFF25DA";
-//                mPreview.setBackgroundColor(Color.parseColor("#4DFF25DA"));
-//            }
-//            if (val >= 90 && val < 130) {
-//                filtercolor = "#4DFD1FCB";
-//                mPreview.setBackgroundColor(Color.parseColor("#4DFD1FCB"));
-//            }
-//            if (val >= 130 && val < 150) {
-//                filtercolor = "#4DCF03CE";
-//                mPreview.setBackgroundColor(Color.parseColor("#4DCF03CE"));
-//            }
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1018,61 +919,6 @@ public class Camsettings extends AppCompatActivity {
                 param.setExposureCompensation(0);
                 break;
         }
-
-
-//        switch (s) {
-//            case "1/4":
-//            case "1/5":
-//            case "1/6":
-//            case "1/8":
-//            case "1/10":
-//                param.setExposureCompensation(20);
-//                break;
-//            case "1/13":
-//            case "1/15":
-//            case "1/20":
-//            case "1/30":
-//                param.setExposureCompensation(15);
-//                break;
-//            case "1/40":
-//            case "1/50":
-//            case "1/60":
-//            case "1/80":
-//            case "1/100":
-//            case "1/125":
-//            case "1/160":
-//                param.setExposureCompensation(5);
-//                break;
-//            case "1/200":
-//            case "1/250":
-//            case "1/320":
-//            case "1/400":
-//            case "1/500":
-//                param.setExposureCompensation(0);
-//                break;
-//            case "1/640":
-//            case "1/800":
-//            case "1/1000":
-//            case "1/1250":
-//            case "1/1600":
-//                param.setExposureCompensation(-5);
-//                break;
-//            case "1/2000":
-//            case "1/2500":
-//            case "1/3200":
-//                param.setExposureCompensation(-15);
-//                break;
-//            case "1/4000":
-//            case "1/5000":
-//            case "1/6400":
-//            case "1/8000":
-//                param.setExposureCompensation(-20);
-//                break;
-//            default:
-//                param.setExposureCompensation(0);
-//                break;
-//        }
-
 
         mCamera.setParameters(param);
 

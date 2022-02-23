@@ -49,6 +49,7 @@ public class SelectstudioLight extends AppCompatActivity {
     JSONArray numberlistArray;
     ImageView ll_bg;
     String backgroundimageresponse, AppContentresponse;
+    String lightname;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -136,9 +137,6 @@ public class SelectstudioLight extends AppCompatActivity {
             ll_dslrselect.setVisibility(View.VISIBLE);
 
         }
-
-
-
 
 
         btnSetting.setOnClickListener(new View.OnClickListener() {
@@ -239,30 +237,41 @@ public class SelectstudioLight extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (Lightnumber.length() > 0) {
+                if (light.equals("fluorescnent") && lightname.equals("US31LED")){
+                    Toast.makeText(getApplicationContext(),"Not Applicable",Toast.LENGTH_SHORT).show();
+                }else if (light.equals("fluorescnent") && lightname.equals("VS36LED")){
+                    Toast.makeText(getApplicationContext(),"Not Applicable",Toast.LENGTH_SHORT).show();
+                }else if (light.equals("fluorescnent") && lightname.equals("VS36LED")){
+                    Toast.makeText(getApplicationContext(),"Not Applicable",Toast.LENGTH_SHORT).show();
+                }else {
 
-                    btnNext.setBackgroundResource(R.drawable.bg1);
-                    btnRestart.setBackgroundResource(R.drawable.bg2);
-                    Intent intent = new Intent(SelectstudioLight.this, SelectstudioLight2.class);
-                    intent.putExtra("light", light);
-                    intent.putExtra("lightnumber", Lightnumber);
-                    intent.putExtra("phordslr", phordslr);
-                    startActivity(intent);
+                    if (Lightnumber.length() > 0) {
 
-                } else {
+                        btnNext.setBackgroundResource(R.drawable.bg1);
+                        btnRestart.setBackgroundResource(R.drawable.bg2);
+                        Intent intent = new Intent(SelectstudioLight.this, SelectstudioLight2.class);
+                        intent.putExtra("light", light);
+                        intent.putExtra("lightnumber", Lightnumber);
+                        intent.putExtra("phordslr", phordslr);
+                        startActivity(intent);
+
+                    } else {
 
 
-                    Toast toast = Toast.makeText(getApplicationContext(), "Please Select Light", Toast.LENGTH_LONG);
-                    view = toast.getView();
-                    view.setBackgroundResource(R.drawable.border3);
-                    TextView text = (TextView) view.findViewById(android.R.id.message);
-                    /*Here you can do anything with above textview like text.setTextColor(Color.parseColor("#000000"));*/
-                    text.setTextColor(Color.parseColor("#000000"));
-                    toast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    toast.show();
+                        Toast toast = Toast.makeText(getApplicationContext(), "Please Select Light", Toast.LENGTH_SHORT);
+                        view = toast.getView();
+                        view.setBackgroundResource(R.drawable.border3);
+                        TextView text = (TextView) view.findViewById(android.R.id.message);
+                        /*Here you can do anything with above textview like text.setTextColor(Color.parseColor("#000000"));*/
+                        text.setTextColor(Color.parseColor("#000000"));
+                        toast.setGravity(Gravity.CENTER | Gravity.CENTER_HORIZONTAL, 0, 0);
+                        toast.show();
 
+
+                    }
 
                 }
+
 
 
             }
@@ -285,147 +294,7 @@ public class SelectstudioLight extends AppCompatActivity {
 
 
         showProgressDialog();
-
-        /*if (light.equals("Led")) {
-
-            lightresponse = "{\n" +
-                    "  \"status\": true,\n" +
-                    "  \"data\": {\n" +
-                    "    \"lightbox\": {\n" +
-                    "      \"name\": [\n" +
-                    "        \"PS5\",\n" +
-                    "        \"MS20\",\n" +
-                    "        \"MS20J\",\n" +
-                    "        \"MS20PRO\",\n" +
-                    "        \"MS32\",\n" +
-                    "        \"US31LED\",\n" +
-                    "        \"VS36LED\",\n" +
-                    "        \"VS53LED\"\n" +
-                    "      ],\n" +
-                    "      \"led_light_number\": [\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\",\n" +
-                    "        \"4\",\n" +
-                    "        \"4\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\"\n" +
-                    "      ],\n" +
-                    "      \"florecent_light_number\": [\n" +
-                    "        \"1\",\n" +
-                    "        \"1\",\n" +
-                    "        \"1\",\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"0\",\n" +
-                    "        \"0\",\n" +
-                    "        \"0\"\n" +
-                    "      ]\n" +
-                    "    },\n" +
-                    "    \"additional_lights\": {\n" +
-                    "      \"name\": [\n" +
-                    "        \"AL1 Accent Light\",\n" +
-                    "        \"AL2 Accent Light\",\n" +
-                    "        \"AL1-LED Accent Light\",\n" +
-                    "        \"AL2-LED Accent Light\",\n" +
-                    "        \"Extra light bar for PS5\",\n" +
-                    "        \"Extra light bar for MS20\",\n" +
-                    "        \"Extra light bar for MS32\"\n" +
-                    "      ],\n" +
-                    "      \"led_light_number\": [\n" +
-                    "        \"0\",\n" +
-                    "        \"0\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\",\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\"\n" +
-                    "      ],\n" +
-                    "      \"florecent_light_number\": [\n" +
-                    "        \"1\",\n" +
-                    "        \"2\",\n" +
-                    "        \"0\",\n" +
-                    "        \"0\",\n" +
-                    "        \"1\",\n" +
-                    "        \"1\",\n" +
-                    "        \"2\"\n" +
-                    "      ]\n" +
-                    "    }\n" +
-                    "  }\n" +
-                    "}";
-        } else {
-
-
-            lightresponse = "{\n" +
-                    "  \"status\": true,\n" +
-                    "  \"data\": {\n" +
-                    "    \"lightbox\": {\n" +
-                    "      \"name\": [\n" +
-                    "        \"PS5\",\n" +
-                    "        \"MS20\",\n" +
-                    "        \"MS20J\",\n" +
-                    "        \"MS20PRO\",\n" +
-                    "        \"MS32\",\n" +
-                    "        \"US31LED\",\n" +
-                    "        \"VS36LED\",\n" +
-                    "        \"VS53LED\"\n" +
-                    "      ],\n" +
-                    "      \"led_light_number\": [\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\",\n" +
-                    "        \"4\",\n" +
-                    "        \"4\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\"\n" +
-                    "      ],\n" +
-                    "      \"florecent_light_number\": [\n" +
-                    "        \"1\",\n" +
-                    "        \"1\",\n" +
-                    "        \"1\",\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"0\",\n" +
-                    "        \"0\",\n" +
-                    "        \"0\"\n" +
-                    "      ]\n" +
-                    "    },\n" +
-                    "    \"additional_lights\": {\n" +
-                    "      \"name\": [\n" +
-                    "        \"AL1 Accent Light\",\n" +
-                    "        \"AL2 Accent Light\",\n" +
-                    "        \"AL1-LED Accent Light\",\n" +
-                    "        \"AL2-LED Accent Light\",\n" +
-                    "        \"Extra light bar for PS5\",\n" +
-                    "        \"Extra light bar for MS20\",\n" +
-                    "        \"Extra light bar for MS32\"\n" +
-                    "      ],\n" +
-                    "      \"led_light_number\": [\n" +
-                    "        \"0\",\n" +
-                    "        \"0\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\",\n" +
-                    "        \"2\",\n" +
-                    "        \"2\",\n" +
-                    "        \"4\"\n" +
-                    "      ],\n" +
-                    "      \"florecent_light_number\": [\n" +
-                    "        \"1\",\n" +
-                    "        \"2\",\n" +
-                    "        \"0\",\n" +
-                    "        \"0\",\n" +
-                    "        \"1\",\n" +
-                    "        \"1\",\n" +
-                    "        \"2\"\n" +
-                    "      ]\n" +
-                    "    }\n" +
-                    "  }\n" +
-                    "}";
-        }*/
-
-        lightresponse = sharedPreferences.getString("studiolightresponse","");
+        lightresponse = sharedPreferences.getString("studiolightresponse", "");
         String response = lightresponse;
 
         try {
@@ -480,16 +349,19 @@ public class SelectstudioLight extends AppCompatActivity {
 
     private void setupRecycler() {
 
-        studiolightAdapter = new StudiolightAdapter(this, studiolightModelArrayList, lightnumberModelArrayList);
+        studiolightAdapter = new StudiolightAdapter(this, studiolightModelArrayList, lightnumberModelArrayList, light);
         rv_studiolight.setAdapter(studiolightAdapter);
         rv_studiolight.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
 
     }
 
-    public void lightNumber(StudiolightModel studiolightModel) {
+    public void lightNumber(StudiolightModel studiolightModel, String name) {
 
         Lightnumber = studiolightModel.getLedlightnumber();
+        lightname = name;
         Log.d(TAG, "Studionumberlight-->" + Lightnumber);
+        Log.d(TAG, "name-->" + lightname);
+
     }
 
 

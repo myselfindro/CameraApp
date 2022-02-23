@@ -102,13 +102,12 @@
         android:layout_marginTop="@dimen/_20sdp">
 
 
-
         <Switch
             android:id="@+id/btnAElock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTintMode="@color/colorAccent"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:buttonTintMode="@color/colorAccent" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -292,7 +291,6 @@
     <com.example.cameraapp.utils.DrawingView
         android:id="@+id/drawing_surface"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.example.cameraapp.utils.DrawingView>
+        android:layout_height="match_parent"></com.example.cameraapp.utils.DrawingView>
 
 </RelativeLayout>

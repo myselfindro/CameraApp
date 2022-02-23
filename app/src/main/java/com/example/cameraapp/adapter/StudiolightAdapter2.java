@@ -23,16 +23,18 @@ public class StudiolightAdapter2 extends RecyclerView.Adapter<StudiolightAdapter
     private LayoutInflater inflater;
     private ArrayList<StudiolightModel> studiolightModelArrayList;
     ArrayList<StudiolightModel> lightnumberModelArrayList;
+    String lightvalue;
 
     Context ctx;
     int selectedPosition = -1;
 
 
-    public StudiolightAdapter2(Context ctx, ArrayList<StudiolightModel> studiolightModelArrayList, ArrayList<StudiolightModel> lightnumberModelArrayList) {
+    public StudiolightAdapter2(Context ctx, ArrayList<StudiolightModel> studiolightModelArrayList, ArrayList<StudiolightModel> lightnumberModelArrayList, String light) {
         inflater = LayoutInflater.from(ctx);
         this.studiolightModelArrayList = studiolightModelArrayList;
         this.lightnumberModelArrayList = lightnumberModelArrayList;
         this.ctx = ctx;
+        lightvalue = light;
 
     }
 
@@ -48,10 +50,63 @@ public class StudiolightAdapter2 extends RecyclerView.Adapter<StudiolightAdapter
     public void onBindViewHolder(StudiolightAdapter2.MyViewHolder holder, int position) {
 
         holder.tvLight.setText(studiolightModelArrayList.get(position).getLightboxname());
-        if (selectedPosition == position)
-            holder.btnLight.setBackgroundResource(R.drawable.bg1);
-        else
-            holder.btnLight.setBackgroundResource(R.drawable.border);
+        if (selectedPosition == position) {
+
+            if (lightvalue.equals("fluorescnent")) {
+                switch (studiolightModelArrayList.get(position).getLightboxname()) {
+                    case "AL1-LED Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "AL2-LED Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    default:
+                        holder.btnLight.setBackgroundResource(R.drawable.bg1);
+                        break;
+                }
+            } else if (lightvalue.equals("Led")){
+                switch (studiolightModelArrayList.get(position).getLightboxname()) {
+                    case "AL1 Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "AL2 Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    default:
+                        holder.btnLight.setBackgroundResource(R.drawable.bg1);
+                        break;
+                }
+            }
+
+        } else {
+
+            if (lightvalue.equals("fluorescnent")) {
+                switch (studiolightModelArrayList.get(position).getLightboxname()) {
+                    case "AL1-LED Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "AL2-LED Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    default:
+                        holder.btnLight.setBackgroundResource(R.drawable.border);
+                        break;
+                }
+            } else if (lightvalue.equals("Led")){
+                switch (studiolightModelArrayList.get(position).getLightboxname()) {
+                    case "AL1 Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    case "AL2 Accent Light":
+                        holder.btnLight.setBackgroundResource(R.drawable.bg3);
+                        break;
+                    default:
+                        holder.btnLight.setBackgroundResource(R.drawable.border);
+                        break;
+                }
+            }
+
+        }
         holder.btnLight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +114,7 @@ public class StudiolightAdapter2 extends RecyclerView.Adapter<StudiolightAdapter
                 notifyDataSetChanged();
 //                String number = lightnumberModelArrayList.get(position).getLedlightnumber();
 //                Log.d(TAG,"LEDnumber-->"+number);
-                ((AdditionalLight)ctx).AdditionalLightNumber(lightnumberModelArrayList.get(position));
+                ((AdditionalLight) ctx).AdditionalLightNumber(lightnumberModelArrayList.get(position), studiolightModelArrayList.get(position).getLightboxname());
 
 
             }

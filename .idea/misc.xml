@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/drawable/bg1.xml" value="0.1845" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/drawable/bg3.xml" value="0.1845" />
         <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_additional_light.xml" value="0.23802083333333332" />
-        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_camerafilter.xml" value="0.23802083333333332" />
+        <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_camerafilter.xml" value="0.2" />
         <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_camsettings.xml" value="0.264" />
         <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
         <entry key="..\:/camv2/CameraApp/app/src/main/res/layout/activity_rsettings.xml" value="0.23802083333333332" />

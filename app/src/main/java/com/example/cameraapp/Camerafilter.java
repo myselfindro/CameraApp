@@ -13,8 +13,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,7 @@ public class Camerafilter extends AppCompatActivity {
     String fontcamera = "";
     ImageView iconFilter;
     String light;
+    Switch btnAElock;
     /* access modifiers changed from: private */
     public Camera mCamera;
     private Camera.PictureCallback mPicture;
@@ -90,6 +93,7 @@ public class Camerafilter extends AppCompatActivity {
         this.btnswitchCamera = (LinearLayoutCompat) findViewById(R.id.btnswitchCamera);
         this.btnIconCam = (ImageView) findViewById(R.id.btnIconCam);
         drawingView = (DrawingView) findViewById(R.id.drawing_surface);
+        btnAElock = findViewById(R.id.btnAElock);
         getWindow().addFlags(128);
         this.myContext = this;
         Camera open = Camera.open();
@@ -104,6 +108,8 @@ public class Camerafilter extends AppCompatActivity {
         this.mCamera.startPreview();
         mPreview.setDrawingView(drawingView);
         safeToTakePicture = true;
+        mPreview.aflock=true;
+
 //        this.mPreview.setZOrderOnTop(true);
 //        this.mPreview.getHolder().setFormat(-3);
         onClick();
@@ -159,6 +165,20 @@ public class Camerafilter extends AppCompatActivity {
             }
         });
 
+        btnAElock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    mPreview.aflock=false;
+
+                } else {
+                    mPreview.aflock=true;
+
+                }
+
+            }
+        });
 
 //        mPreview.setOnTouchListener(new View.OnTouchListener() {
 //            @Override
@@ -171,60 +191,7 @@ public class Camerafilter extends AppCompatActivity {
 //        });
     }
 
-    private void focusOnTouch(MotionEvent event) {
-        if (mCamera != null ) {
 
-            Camera.Parameters parameters = mCamera.getParameters();
-            if (parameters.getMaxNumMeteringAreas() > 0){
-                Log.i(TAG,"fancy !");
-                Rect rect = calculateFocusArea(event.getX(), event.getY());
-
-                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-                List<Camera.Area> meteringAreas = new ArrayList<Camera.Area>();
-                meteringAreas.add(new Camera.Area(rect, 800));
-                parameters.setFocusAreas(meteringAreas);
-
-                mCamera.setParameters(parameters);
-                mCamera.autoFocus(mAutoFocusTakePictureCallback);
-            }else {
-                mCamera.autoFocus(mAutoFocusTakePictureCallback);
-            }
-        }
-    }
-
-    private Rect calculateFocusArea(float x, float y) {
-        int left = clamp(Float.valueOf((x / mPreview.getWidth()) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
-        int top = clamp(Float.valueOf((y / mPreview.getHeight()) * 2000 - 1000).intValue(), FOCUS_AREA_SIZE);
-
-        return new Rect(left, top, left + FOCUS_AREA_SIZE, top + FOCUS_AREA_SIZE);
-    }
-
-    private int clamp(int touchCoordinateInCameraReper, int focusAreaSize) {
-        int result;
-        if (Math.abs(touchCoordinateInCameraReper)+focusAreaSize/2>1000){
-            if (touchCoordinateInCameraReper>0){
-                result = 1000 - focusAreaSize/2;
-            } else {
-                result = -1000 + focusAreaSize/2;
-            }
-        } else{
-            result = touchCoordinateInCameraReper - focusAreaSize/2;
-        }
-        return result;
-    }
-
-    private Camera.AutoFocusCallback mAutoFocusTakePictureCallback = new Camera.AutoFocusCallback() {
-        @Override
-        public void onAutoFocus(boolean success, Camera camera) {
-            if (success) {
-                // do something...
-                Log.i("tap_to_focus","success!");
-            } else {
-                // do something...
-                Log.i("tap_to_focus","fail!");
-            }
-        }
-    };
 
     private int findFrontFacingCamera() {
         Toast.makeText(getApplicationContext(), "Front Camera", 0).show();
