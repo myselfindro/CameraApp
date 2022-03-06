@@ -95,10 +95,12 @@ public class Camsettings extends AppCompatActivity {
     Switch btnAElock;
     String aelock = "1";
     SharedPreferences sharedPreferences;
-    private List<String> data;
     JSONArray Isoarry;
     SurfaceHolder holder;
     private List<String> shutterdata;
+    private List<String> data;
+    private List<String> whitebalancedata;
+
     private DrawingView drawingView;
 
 
@@ -191,6 +193,14 @@ public class Camsettings extends AppCompatActivity {
         rv_temp.setLayoutManager(pickerLayoutManager3);
         rv_temp.setAdapter(adapter);
 
+//        rv_temp.setOrientation(DSVOrientation.HORIZONTAL);
+//        adapter = new PickerAdapter2(this, gettempData(0), rv_temp);
+//        rv_temp.setAdapter(adapter);
+//        rv_temp.setItemTransformer(new ScaleTransformer.Builder()
+//        .setMinScale(0.8f)
+//        .setMaxScale(1.1f)
+//        .build());
+
         rv_ISO.setOrientation(DSVOrientation.HORIZONTAL);
         adapter2 = new PickerAdapter2(this, getisoData(0), rv_ISO);
         rv_ISO.setAdapter(adapter2);
@@ -218,10 +228,65 @@ public class Camsettings extends AppCompatActivity {
 
 
 
-        rv_temp.scrollToPosition(40);
+        if (whitebalancedata.contains("5000")){
+            rv_temp.scrollToPosition(whitebalancedata.indexOf("5000"));
+            tvTemp.setText("Temperature: " + "5000" + "K");
+            Camera.Parameters param;
+            param = mCamera.getParameters();
+            param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
+            mCamera.setParameters(param);
+
+        }else {
+            rv_temp.scrollToPosition(0);
+            tvTemp.setText("Temperature: " + "1000" + "K");
+            Camera.Parameters param;
+            param = mCamera.getParameters();
+            param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_INCANDESCENT);
+            mCamera.setParameters(param);
+
+        }
         rv_tint.scrollToPosition(14);
         btnTint.setText("Tint: 0");
         tvTemp.setText("Temperature: " + "5000" + "K");
+        switch (totallights) {
+            case 1:
+                btnShutter.setText("Shutter Speed: 1/13");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/13"));
+                break;
+            case 2:
+                btnShutter.setText("Shutter Speed: 1/25");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
+                break;
+            case 3:
+                btnShutter.setText("Shutter Speed: 1/40");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/40"));
+                break;
+            case 4:
+                btnShutter.setText("Shutter Speed: 1/50");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
+                break;
+            case 5:
+                btnShutter.setText("Shutter Speed: 1/50");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
+                break;
+            case 6:
+                btnShutter.setText("Shutter Speed: 1/80");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
+                break;
+            case 7:
+                btnShutter.setText("Shutter Speed: 1/80");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
+                break;
+            case 8:
+                btnShutter.setText("Shutter Speed: 1/100");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/100"));
+                break;
+            default:
+                btnShutter.setText("Shutter Speed: 1/25");
+                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
+
+                break;
+        }
 
         btnAElock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -348,6 +413,17 @@ public class Camsettings extends AppCompatActivity {
 
             }
         });
+
+//        rv_temp.addOnItemChangedListener(new DiscreteScrollView.OnItemChangedListener<RecyclerView.ViewHolder>(){
+//
+//            @Override
+//            public void onCurrentItemChanged(@Nullable RecyclerView.ViewHolder viewHolder, int adapterPosition) {
+//
+//                onItemChangedTemp(adapter.dataList2.get(adapterPosition));
+//
+//
+//            }
+//        });
 
 
         rv_ISO.addOnItemChangedListener(new DiscreteScrollView.OnItemChangedListener<RecyclerView.ViewHolder>() {
@@ -591,25 +667,31 @@ public class Camsettings extends AppCompatActivity {
                 if (isChecked) {
 
 
-                    rv_temp.scrollToPosition(44);
+                    if (whitebalancedata.contains("5000")){
+                        rv_temp.smoothScrollToPosition(whitebalancedata.indexOf("5000"));
+//                        tvTemp.setText("Temperature: " + "5000" + "K");
+                    }else {
+                        rv_temp.smoothScrollToPosition(2);
+//                        tvTemp.setText("Temperature: " + "1000" + "K");
+
+                    }
                     rv_tint.scrollToPosition(14);
                     btnTint.setText("Tint: 0");
-                    tvTemp.setText("Temperature: " + "5000" + "K");
-                    Camera.Parameters param;
-                    param = mCamera.getParameters();
-                    param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
-                    mCamera.setParameters(param);
+//                    Camera.Parameters param;
+//                    param = mCamera.getParameters();
+//                    param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
+//                    mCamera.setParameters(param);
 
 
                 } else {
-                    rv_temp.scrollToPosition(1);
+                    rv_temp.smoothScrollToPosition(1);
+                    tvTemp.setText("Temperature: " + "1100" + "K");
                     rv_tint.scrollToPosition(14);
                     btnTint.setText("Tint: 0");
-                    tvTemp.setText("Temperature: " + "1000" + "K");
-                    Camera.Parameters param;
-                    param = mCamera.getParameters();
-                    param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_INCANDESCENT);
-                    mCamera.setParameters(param);
+//                    Camera.Parameters param;
+//                    param = mCamera.getParameters();
+//                    param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_INCANDESCENT);
+//                    mCamera.setParameters(param);
 
 
                 }
@@ -617,56 +699,44 @@ public class Camsettings extends AppCompatActivity {
         });
 
 
-        switch (totallights) {
-            case 1:
-                btnShutter.setText("Shutter Speed: 1/13");
-//                rv_Shutter.scrollToPosition(5);
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/13"));
-                break;
-            case 2:
-                btnShutter.setText("Shutter Speed: 1/25");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
-//                rv_Shutter.scrollToPosition(8);
-                break;
-            case 3:
-                btnShutter.setText("Shutter Speed: 1/40");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/40"));
-//                rv_Shutter.scrollToPosition(10);
-                break;
-            case 4:
-                btnShutter.setText("Shutter Speed: 1/50");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
-//                rv_Shutter.scrollToPosition(11);
-                break;
-            case 5:
-                btnShutter.setText("Shutter Speed: 1/50");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
-//                rv_Shutter.scrollToPosition(11);
-                break;
-            case 6:
-                btnShutter.setText("Shutter Speed: 1/80");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
-//                rv_Shutter.scrollToPosition(13);
-                break;
-            case 7:
-                btnShutter.setText("Shutter Speed: 1/80");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
-//                rv_Shutter.scrollToPosition(13);
-                break;
-            case 8:
-                btnShutter.setText("Shutter Speed: 1/100");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/100"));
-//                rv_Shutter.scrollToPosition(14);
-                break;
-            default:
-                btnShutter.setText("Shutter Speed: 1/25");
-                rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
-//                rv_Shutter.scrollToPosition(8);
-                break;
-        }
-
-
     }
+
+
+//    public void onItemChangedTemp(String s){
+//        Camera.Parameters param;
+//        param = mCamera.getParameters();
+//        String supportedValues = param.get("aperture");
+//        Log.d(TAG, "values-->" + supportedValues);
+//        try {
+//            int val = Integer.parseInt(s);
+//            if (val < 2000) {
+//                param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_INCANDESCENT);
+//            }
+//            if (val >= 2000 && val < 4000) {
+//                param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_FLUORESCENT);
+//            }
+//            if (val >= 4000 && val < 5000) {
+//                param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
+//            }
+//            if (val >= 5000 && val < 6000) {
+//                param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_DAYLIGHT);
+//            }
+//            if (val >= 6000 && val < 8000) {
+//                param.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_CLOUDY_DAYLIGHT);
+//            }
+//
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//        mCamera.setParameters(param);
+//        Log.i(" Progress ", "Supported White Balance Modes:" + param.getWhiteBalance().toString());
+//        tvTemp.setText("Temperature: " + s + "K");
+//        btnAutowbswitch.setChecked(false);
+//
+//    }
 
 
 
@@ -1089,30 +1159,42 @@ public class Camsettings extends AppCompatActivity {
                 rv_ISO.scrollToPosition(0);
                 switch (totallights) {
                     case 1:
-                        rv_Shutter.scrollToPosition(4);
+                        btnShutter.setText("Shutter Speed: 1/13");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/13"));
                         break;
                     case 2:
-                        rv_Shutter.scrollToPosition(8);
+                        btnShutter.setText("Shutter Speed: 1/25");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
                         break;
                     case 3:
-                        rv_Shutter.scrollToPosition(10);
+                        btnShutter.setText("Shutter Speed: 1/40");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/40"));
                         break;
                     case 4:
+                        btnShutter.setText("Shutter Speed: 1/50");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
+                        break;
                     case 5:
-                        rv_Shutter.scrollToPosition(11);
+                        btnShutter.setText("Shutter Speed: 1/50");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/50"));
                         break;
                     case 6:
+                        btnShutter.setText("Shutter Speed: 1/80");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
+                        break;
                     case 7:
-                        rv_Shutter.scrollToPosition(13);
+                        btnShutter.setText("Shutter Speed: 1/80");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/80"));
                         break;
                     case 8:
-                        rv_Shutter.scrollToPosition(14);
+                        btnShutter.setText("Shutter Speed: 1/100");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/100"));
                         break;
                     default:
-                        rv_Shutter.scrollToPosition(8);
+                        btnShutter.setText("Shutter Speed: 1/25");
+                        rv_Shutter.scrollToPosition(shutterdata.indexOf("1/25"));
                         break;
                 }
-
                 rv_temp.smoothScrollToPosition(44);
                 rv_tint.scrollToPosition(14);
                 btnTint.setText("Tint: 0");
@@ -1132,83 +1214,22 @@ public class Camsettings extends AppCompatActivity {
     }
 
     public List<String> gettempData(int count) {
-        List<String> data = new ArrayList<>();
-        data.add("");
-        data.add("");
-        data.add("1000");
-        data.add("1100");
-        data.add("1200");
-        data.add("1300");
-        data.add("1400");
-        data.add("1500");
-        data.add("1600");
-        data.add("1700");
-        data.add("1800");
-        data.add("1900");
-        data.add("2000");
-        data.add("2100");
-        data.add("2200");
-        data.add("2300");
-        data.add("2400");
-        data.add("2500");
-        data.add("2600");
-        data.add("2700");
-        data.add("2800");
-        data.add("2900");
-        data.add("3000");
-        data.add("3100");
-        data.add("3200");
-        data.add("3300");
-        data.add("3400");
-        data.add("3500");
-        data.add("3600");
-        data.add("3700");
-        data.add("3800");
-        data.add("3900");
-        data.add("4000");
-        data.add("4100");
-        data.add("4200");
-        data.add("4300");
-        data.add("4400");
-        data.add("4500");
-        data.add("4600");
-        data.add("4700");
-        data.add("4800");
-        data.add("4900");
-        data.add("5000");
-        data.add("5100");
-        data.add("5200");
-        data.add("5300");
-        data.add("5400");
-        data.add("5500");
-        data.add("5600");
-        data.add("5700");
-        data.add("5800");
-        data.add("5900");
-        data.add("6000");
-        data.add("6100");
-        data.add("6200");
-        data.add("6300");
-        data.add("6400");
-        data.add("6500");
-        data.add("6600");
-        data.add("6700");
-        data.add("6800");
-        data.add("6900");
-        data.add("7000");
-        data.add("7100");
-        data.add("7200");
-        data.add("7300");
-        data.add("7400");
-        data.add("7500");
-        data.add("7600");
-        data.add("7700");
-        data.add("7800");
-        data.add("7900");
-        data.add("8000");
-        data.add("");
-        data.add("");
-        return data;
+        whitebalancedata = new ArrayList<String>();
+        try {
+            JSONObject res = new JSONObject(CameraExposureSettingsIncrementalValuesresponse);
+            Isoarry = res.getJSONObject("data").getJSONArray("white_balance");
+            whitebalancedata.add("");
+            whitebalancedata.add("");
+            for (int i = 0; i < Isoarry.length(); i++) {
+                whitebalancedata.add(String.valueOf(Isoarry.get(i)));
+            }
+            whitebalancedata.add("");
+            whitebalancedata.add("");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return whitebalancedata;
     }
 
 
@@ -1248,19 +1269,6 @@ public class Camsettings extends AppCompatActivity {
     }
 
     public List<String> getisoData(int count) {
-//        List<String> data = new ArrayList<>();
-//
-//        data.add("25");
-//        data.add("50");
-//        data.add("100");
-//        data.add("200");
-//        data.add("400");
-//        data.add("800");
-//        data.add("1600");
-//
-//
-//        return data;
-
         data = new ArrayList<String>();
         try {
             JSONObject res = new JSONObject(CameraExposureSettingsIncrementalValuesresponse);
@@ -1291,42 +1299,6 @@ public class Camsettings extends AppCompatActivity {
         }
 
         return shutterdata;
-//        data.add("1/4");
-//        data.add("1/5");
-//        data.add("1/6");
-//        data.add("1/8");
-//        data.add("1/10");
-//        data.add("1/13");
-//        data.add("1/15");
-//        data.add("1/20");
-//        data.add("1/25");
-//        data.add("1/30");
-//        data.add("1/40");
-//        data.add("1/50");
-//        data.add("1/60");
-//        data.add("1/80");
-//        data.add("1/100");
-//        data.add("1/125");
-//        data.add("1/160");
-//        data.add("1/200");
-//        data.add("1/250");
-//        data.add("1/320");
-//        data.add("1/400");
-//        data.add("1/500");
-//        data.add("1/640");
-//        data.add("1/800");
-//        data.add("1/1000");
-//        data.add("1/1250");
-//        data.add("1/1600");
-//        data.add("1/2000");
-//        data.add("1/2500");
-//        data.add("1/3200");
-//        data.add("1/4000");
-//        data.add("1/5000");
-//        data.add("1/6400");
-//        data.add("1/8000");
-//
-//        return data;
 
     }
 

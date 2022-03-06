@@ -13,25 +13,25 @@
         android:orientation="vertical">
 
 
-<!--        <com.wonderkiln.camerakit.CameraView xmlns:camerakit="http://schemas.android.com/apk/res-auto"-->
-<!--            android:id="@+id/camera"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:adjustViewBounds="true"-->
-<!--            camerakit:ckCropOutput="true"-->
-<!--            camerakit:ckFacing="back"-->
-<!--            camerakit:ckFlash="off"-->
-<!--            camerakit:ckFocus="continuous"-->
-<!--            camerakit:ckJpegQuality="100"-->
-<!--            camerakit:ckMethod="standard"-->
-<!--            camerakit:ckPermissions="strict"-->
-<!--            camerakit:ckZoom="pinch" />-->
+        <!--        <com.wonderkiln.camerakit.CameraView xmlns:camerakit="http://schemas.android.com/apk/res-auto"-->
+        <!--            android:id="@+id/camera"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:adjustViewBounds="true"-->
+        <!--            camerakit:ckCropOutput="true"-->
+        <!--            camerakit:ckFacing="back"-->
+        <!--            camerakit:ckFlash="off"-->
+        <!--            camerakit:ckFocus="continuous"-->
+        <!--            camerakit:ckJpegQuality="100"-->
+        <!--            camerakit:ckMethod="standard"-->
+        <!--            camerakit:ckPermissions="strict"-->
+        <!--            camerakit:ckZoom="pinch" />-->
 
-    <LinearLayout
-        android:id="@+id/cPreview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"/>
+        <LinearLayout
+            android:id="@+id/cPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
 
 
         <TextView
@@ -41,12 +41,11 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_20sdp"
             android:fontFamily="@font/poppins_medium"
+            android:gravity="center_horizontal"
             android:text="AE/AF Lock"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_10sdp"
-            android:gravity="center_horizontal" />
-
+            android:textSize="@dimen/_10sdp" />
 
 
     </LinearLayout>
@@ -85,11 +84,11 @@
                 android:id="@+id/btnDetails"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/_8sdp"
                 android:src="@drawable/ic_more"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:visibility="gone" />
         </LinearLayout>
 
 
@@ -112,11 +111,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:layout_below="@+id/btnAElock"
+            android:layout_centerInParent="true"
+            android:background="#b2000000"
+            android:padding="@dimen/_2sdp"
+            android:text="AE/AF LOCK"
             android:textColor="@color/colorAccent"
-            android:text="AE/AF LOCK"/>
-
+            android:textStyle="bold" />
 
 
     </RelativeLayout>
@@ -126,8 +127,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_90sdp"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
 
         <LinearLayout
